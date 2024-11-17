@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="https://cdn.jsdelivr.net/npm/dayjs/dayjs.min.js"></script>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<div class="kindle">
+			<div class="kindle-body">
+				<div class="type1">
+					<div class="type1-time" id="type1Time"></div>
+					<div class="type1-date" id="type1Date"></div>
+					<div class="type1-week" id='type1Week'></div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+	var days = ['星期一', '星期二','星期三','星期四','星期五','星期六','星期天']
+	getCurrentDate()
+	// 获取参数
+	function getQueryParam(param) {
+	  const urlParams = new URLSearchParams(window.location.search);
+	  return urlParams.get(param);
+	}
+	function getCurrentDate(){
+		var type1WeekEl = document.getElementById('type1Week')
+		type1WeekEl.innerText = days[dayjs().day()]
+		setInterval(function(){
+			var time = dayjs().format('HH:MM')
+			var date = dayjs().format('YYYY年MM月DD日')
+			var type1TimeEl = document.getElementById('type1Time')
+			var type1DateEl = document.getElementById('type1Date')
+			type1TimeEl.innerText = time
+			type1DateEl.innerText = date
+		}, 1000)
+	}
+</script>
+<style>
+	html, body{
+		padding: 0;
+		margin: 0;
+		background-color: #fff;
+	}
+	.kindle{
+		width: 100vw;
+		height: 100vh;
+	}
+	.kindle-header{
+		text-align: center;
+		line-height: 20vw;
+		font-size: 10vw;
+	}
+	.kindle-body{
+		width: 100vw;
+		height: fit-content;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.type1-time{
+		text-align: center;
+		line-height: 40vw;
+		font-size: 30vw;
+	}
+	.type1-date{
+		text-align: center;
+		font-size: 8vw;
+		line-height: 20vw;
+	}
+	.type1-week{
+		text-align: center;
+		font-size: 8vw;
+		line-height: 20vw;
+	}
+</style>
