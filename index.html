@@ -10,6 +10,8 @@
 
 	<body>
 		<script src="https://cdn.jsdelivr.net/npm/dayjs/dayjs.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/dayjs/plugin/utc"></script>
+		<script src="js/utc.js"></script>
 		<script src="js/mui.js"></script>
 		<script type="text/javascript">
 			mui.init()
@@ -28,6 +30,7 @@
 </html>
 <script>
 	var days = ['星期一', '星期二','星期三','星期四','星期五','星期六','星期天']
+	dayjs.extend(dayjs_plugin_utc)
 	getCurrentDate()
 	// 获取参数
 	function getQueryParam(param) {
@@ -36,10 +39,10 @@
 	}
 	function getCurrentDate(){
 		var type1WeekEl = document.getElementById('type1Week')
-		type1WeekEl.innerText = days[dayjs().day()]
+		type1WeekEl.innerText = days[dayjs.utc().day()]
 		setInterval(function(){
-			var time = dayjs().format('HH:MM')
-			var date = dayjs().format('YYYY年MM月DD日')
+			var time = dayjs.utc().format('HH:MM')
+			var date = dayjs.utc().format('YYYY年MM月DD日')
 			var type1TimeEl = document.getElementById('type1Time')
 			var type1DateEl = document.getElementById('type1Date')
 			type1TimeEl.innerText = time
@@ -59,7 +62,7 @@
 		margin-top: 50px;
 		width: 100%;
 		height: fit-content;
-		padding: 20px 20px;
+		padding: 0 20px;
 	}
 	.type1-time{
 		text-align: center;
