@@ -42,7 +42,7 @@
 		type1WeekEl.innerText = days[dayjs.utc().day()]
 		setInterval(function(){
 			console.log(dayjs.utc().format('hh:mm'))
-			var time = dayjs.utc().format('hh:mm')
+			var time = dayjs.utc().add(8,'h').format('HH:mm')
 			console.log(time)
 			var date = dayjs.utc().format('YYYY年MM月DD日')
 			var type1TimeEl = document.getElementById('type1Time')
