@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+		<script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=wcds3wMls7fWnqxsVAQ6tuAU9aM5Sj6Z"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="container"></div> 
+	</body>
+</html>
+<script>
+	var ak = 'wcds3wMls7fWnqxsVAQ6tuAU9aM5Sj6Z'
+	var serverAk = 'HHuuIIW7b0dxzCULoI3ItFv5BZxQqXGC'
+	function myFun(result){
+		var cityName = result.name;
+		var location = result.center.lng + ',' + result.center.lat
+		console.log(result)
+		getWather(location)
+	}
+	var myCity = new BMapGL.LocalCity();
+	myCity.get(myFun); 
+	function getWather(location){
+		axios.get('https://api.map.baidu.com/weather/v1/?data_type=all&ak=' + serverAk + '&location=' + location)
+	}
+</script>
+<style>
+	html{height:100%}    
+	body{height:100%;margin:0px;padding:0px}    
+</style>
